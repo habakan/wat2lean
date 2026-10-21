@@ -17,7 +17,7 @@ cargo run -- examples/wipe.wat 0 generatedWipeCode
 
 The command writes a Lean `def` to standard output. The function index is zero-based among defined function bodies; imported functions are not counted. The third argument is the name to use for the generated definition.
 
-For nested `block`, `loop`, and `if` bodies, you can optionally provide `line:name` arguments to emit those bodies as separate `List Instr` definitions. Line numbers start at one on the first line after the function header. For example:
+For nested `block` and `loop` bodies, or the then branch of an `if`, you can optionally provide `line:name` arguments to emit those bodies as separate `List Instr` definitions. Line numbers start at one on the first line after the function header. For example:
 
 ```sh
 cargo run -- module.wat 3 generatedFunction 4 loopBody 9 thenBody
