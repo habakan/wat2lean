@@ -1,0 +1,7 @@
+[package]
+name = "wat2lean"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+wast = "=261.0.0"
