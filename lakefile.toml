@@ -1,0 +1,10 @@
+name = "wat2lean"
+defaultTargets = ["WasmCode"]
+
+[[lean_lib]]
+name = "WasmShape"
+globs = ["WasmShape.+"]
+
+[[lean_lib]]
+name = "WasmCode"
+globs = ["WasmCode", "WasmCode.+"]
