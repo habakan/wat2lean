@@ -23,7 +23,7 @@ For nested `block` and `loop` bodies, or the then branch of an `if`, you can opt
 cargo run -- module.wat 3 generatedFunction 4 loopBody 9 thenBody
 ```
 
-The translator reports an error when a function uses instructions or block types outside the current `WasmCode.Syntax` subset. It parses and resolves the WAT module, but emits only the selected function body; it does not generate imports, module metadata, or a specification theorem.
+The translator reports an error when a function uses instructions or block types outside the current `Wat2Lean.Syntax` subset. It parses and resolves the WAT module, but emits only the selected function body; it does not generate imports, module metadata, or a specification theorem.
 
 ## Check generated Lean code
 
@@ -31,14 +31,14 @@ The example below translates `examples/wipe.wat`, then asks Lean to type-check t
 
 ```sh
 {
-  printf '%s\n' 'import WasmCode.Examples.Wipe' 'open WasmCode WasmCode.Instr'
+  printf '%s\n' 'import Wat2Lean.Examples.Wipe' 'open WasmCode WasmCode.Instr'
   cargo run -- examples/wipe.wat 0 generatedWipeCode
   printf '%s\n' 'example : generatedWipeCode = WasmCode.Examples.wipeCode := by rfl'
 } > /tmp/GeneratedWipe.lean
 lake env lean /tmp/GeneratedWipe.lean
 ```
 
-`lake env lean` should finish without errors. The equality connects the translated function to `WasmCode.Examples.wipeCode`; its behavior is covered by `WasmCode.Examples.wipe_call` in `WasmCode/Examples/Wipe.lean`. For example, the theorem states that the function zeroes a valid memory range and preserves the rest of the store. The theorem's assumptions and conclusion are defined in that Lean file.
+`lake env lean` should finish without errors. The equality connects the translated function to `WasmCode.Examples.wipeCode`; its behavior is covered by `WasmCode.Examples.wipe_call` in `Wat2Lean/Examples/Wipe.lean`. For example, the theorem states that the function zeroes a valid memory range and preserves the rest of the store. The theorem's assumptions and conclusion are defined in that Lean file.
 
 To build the Lean library and its bundled examples:
 
@@ -46,6 +46,6 @@ To build the Lean library and its bundled examples:
 lake build
 ```
 
-The library contains the binary reader and function-body decoder (`WasmShape.Binary`, `WasmCode.Syntax`), an executable instruction model (`WasmCode.Semantics`), and a stateful runner for memory, globals, and calls (`WasmCode.Machine`).
+The library contains the binary reader and function-body decoder (`Wat2Lean.Binary`, `Wat2Lean.Syntax`), an executable instruction model (`Wat2Lean.Semantics`), and a stateful runner for memory, globals, and calls (`Wat2Lean.Machine`). Its import paths use `Wat2Lean`; shared declarations stay in the `WasmCode` namespace for downstream proofs.
 
 The model covers an explicit subset of WebAssembly instructions; unsupported instructions fail to decode or trap in the runner. A theorem establishes behavior relative to this model. It does not by itself establish that the model matches every rule in the WebAssembly specification.

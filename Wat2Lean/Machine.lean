@@ -1,4 +1,4 @@
-import WasmCode.Semantics
+import Wat2Lean.Semantics
 
 /-!
 # Running a function that stores and calls

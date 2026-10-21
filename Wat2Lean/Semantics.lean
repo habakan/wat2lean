@@ -1,4 +1,4 @@
-import WasmCode.Syntax
+import Wat2Lean.Syntax
 
 /-!
 # WebAssembly instruction semantics

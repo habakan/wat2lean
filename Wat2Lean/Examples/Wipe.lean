@@ -1,4 +1,4 @@
-import WasmCode.Machine
+import Wat2Lean.Machine
 
 /-!
 # Example proof: wiping a memory range

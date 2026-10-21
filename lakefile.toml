@@ -1,10 +1,6 @@
 name = "wat2lean"
-defaultTargets = ["WasmCode"]
+defaultTargets = ["Wat2Lean"]
 
 [[lean_lib]]
-name = "WasmShape"
-globs = ["WasmShape.+"]
-
-[[lean_lib]]
-name = "WasmCode"
-globs = ["WasmCode", "WasmCode.+"]
+name = "Wat2Lean"
+globs = ["Wat2Lean", "Wat2Lean.+"]

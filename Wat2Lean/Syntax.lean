@@ -1,4 +1,4 @@
-import WasmShape.Binary
+import Wat2Lean.Binary
 
 /-!
 # Function bodies, decoded
