@@ -31,14 +31,14 @@ The example below translates `examples/wipe.wat`, then asks Lean to type-check t
 
 ```sh
 {
-  printf '%s\n' 'import WasmCode.Wipe' 'open WasmCode WasmCode.Instr'
+  printf '%s\n' 'import WasmCode.Examples.Wipe' 'open WasmCode WasmCode.Instr'
   cargo run -- examples/wipe.wat 0 generatedWipeCode
   printf '%s\n' 'example : generatedWipeCode = WasmCode.Examples.wipeCode := by rfl'
 } > /tmp/GeneratedWipe.lean
 lake env lean /tmp/GeneratedWipe.lean
 ```
 
-`lake env lean` should finish without errors. The equality connects the translated function to `WasmCode.Examples.wipeCode`; its behavior is covered by `WasmCode.Examples.wipe_call` in `WasmCode/Wipe.lean`. For example, the theorem states that the function zeroes a valid memory range and preserves the rest of the store. The theorem's assumptions and conclusion are defined in that Lean file.
+`lake env lean` should finish without errors. The equality connects the translated function to `WasmCode.Examples.wipeCode`; its behavior is covered by `WasmCode.Examples.wipe_call` in `WasmCode/Examples/Wipe.lean`. For example, the theorem states that the function zeroes a valid memory range and preserves the rest of the store. The theorem's assumptions and conclusion are defined in that Lean file.
 
 To build the Lean library and its bundled examples:
 
