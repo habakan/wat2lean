@@ -1,0 +1,6 @@
+name = "wat2lean"
+defaultTargets = ["Wat2Lean"]
+
+[[lean_lib]]
+name = "Wat2Lean"
+globs = ["Wat2Lean", "Wat2Lean.+"]
